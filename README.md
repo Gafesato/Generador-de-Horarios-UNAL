@@ -19,14 +19,23 @@ Proyecto desarrollado en el curso de Programación Orientada a Objetos (POO) - 2
 ---
 
 ## Introducción
-Breve explicación sobre el proyecto, su propósito y contexto general.
-Este proyecto tiene el propósito de servirle a los estudiantes de la Universidad Nacional de Colombia con la creación de horarios para sus materias con base a preferencias personales.
+El proceso de inscripción de materias en la Universidad Nacional de Colombia (UNAL) puede ser un desafío, ya que los estudiantes deben seleccionar grupos específicos y evitar conflictos de horarios en una franja de tiempo reducida. Este proyecto automatiza la generación de combinaciones de horarios óptimos para reducir el estrés y mejorar la planificación académica.
 
 ## Problema a Resolver
-Al momento de inscribir materias, a parte de seleccionarlas, debe seleccionar un grupo específico que este a su vez trae un horario. El estudiante puede presentar el problema de tener un conflicto de horarios, por lo que el proyecto se enfoca en aliviar esta carga y proporcionarle al estudiante la cantidad de opciones de horarios diferentes que desea, siendole este útil y evitándole problemas de estrés en la corta franja de inscripción de materias en el SIA.
+Durante la inscripción de materias en el SIA UNAL, los estudiantes deben:
+
+1. Seleccionar las materias requeridas.
+2. Elegir un grupo específico con un horario determinado.
+3. Evitar conflictos entre horarios.
+4. Optimizar su horario según preferencias personales (mañana/tarde, días específicos, profesores, etc.).
+
+Este proyecto facilita el proceso generando múltiples combinaciones de horarios sin solapamientos y ordenadas por preferencia.
 
 ## Solución a la Propuesta
-Explicación de cómo se ha abordado el problema, mencionando las estrategias implementadas.
+Se ha desarrollado un sistema basado en Programación Orientada a Objetos (POO) que:
+- Extrae datos de las materias y sus horarios usando Web Scraping.
+- Utiliza estructuras de datos eficientes como heaps para optimizar la generación de combinaciones.
+- Permite a los estudiantes establecer criterios personalizados para generar un horario ideal.
 
 ## Principios de Programación Utilizados
 ### Programación Orientada a Objetos
@@ -216,8 +225,22 @@ classDiagram
     SubjectScraper --> SubjectParser : parses subject 
 ```
 ### Estructura del Proyecto
-- Explicación de la organización de archivos y carpetas.
-
+```
+📂 generador_horarios
+ ├── 📂 data                    # Archivos JSON de configuración
+ ├── 📂 src                     # Código fuente
+ │   ├── subject.py             # Clase Subject
+ │   ├── schedule_organizer.py  # Clase ScheduleOrganizer
+ │   ├── combination_generator.py  # Generación de combinaciones
+ │   ├── user.py                # Clase Usuario
+ │   ├── scraper.py             # Web Scraping del SIA
+ │   ├── gestor_json.py         # Gestión de archivos JSON
+ ├── 📂 tests                   # Pruebas unitarias
+ ├── README.md                  # Documentación
+ ├── LICENSE.md                 # Licencia
+ ├── requirements.txt           # Dependencias del proyecto
+ ├── main.py                    # Punto de entrada
+```
 ## Interfaz Gráfica de Usuario (GUI)
 - Descripción de la GUI desarrollada y cómo mejora la experiencia del usuario.
 - Capturas de pantalla (si aplica).
@@ -226,8 +249,8 @@ classDiagram
 Pasos detallados para instalar y configurar el entorno de desarrollo:
 ```bash
 # Clonar el repositorio
-git clone https://github.com/usuario/proyecto.git
-cd proyecto
+git clone https://github.com/usuario/generador_horarios_unal.git
+cd generador_horarios_unal
 
 # Crear entorno virtual
 python -m venv env
@@ -243,8 +266,19 @@ pip install -r requirements.txt
 ```
 
 ## Ejemplo de Uso
-Ejemplo de cómo ejecutar el programa y utilizar sus funcionalidades principales.
+```bash
+python main.py
+```
+El sistema solicitará la información del usuario y generará combinaciones de horarios óptimos evitando conflicto
 
 ## Conclusiones
-Resumen de lo aprendido y futuras mejoras que podrían implementarse en el proyecto.
+Este proyecto automatiza la creación de horarios optimizados para estudiantes de la UNAL, permitiendo una selección rápida y eficiente de materias sin conflictos. Se pueden implementar mejoras como una interfaz gráfica y soporte para más criterios de preferencia en futuras versiones.
+
+---
+Autores: 
+[Samuel Fernando Garzón Toro](https://github.com/Gafesato)
+[Juan Esteban Molina Rey](https://github.com/eljuanessoy)
+[Ever Nicolás Muñoz Cortés](https://github.com/nicolasmcort)
+Grupo: [ERROR404]
+Licencia: [AGPL-3.0]
 
