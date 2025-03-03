@@ -20,11 +20,12 @@ Proyecto desarrollado en el curso de Programación Orientada a Objetos (POO) - 2
 
 ## Introducción
 Breve explicación sobre el proyecto, su propósito y contexto general.
+Este proyecto tiene el propósito de servirle a los estudiantes de la Universidad Nacional de Colombia con la creación de horarios para sus materias con base a preferencias personales.
 
 ## Problema a Resolver
-Descripción detallada del problema real que se busca solucionar con este proyecto.
+Al momento de inscribir materias, a parte de seleccionarlas, debe seleccionar un grupo específico que este a su vez trae un horario. El estudiante puede presentar el problema de tener un conflicto de horarios, por lo que el proyecto se enfoca en aliviar esta carga y proporcionarle al estudiante la cantidad de opciones de horarios diferentes que desea, siendole este útil y evitándole problemas de estrés en la corta franja de inscripción de materias en el SIA.
 
-## Solución Propuesta
+## Solución a la Propuesta
 Explicación de cómo se ha abordado el problema, mencionando las estrategias implementadas.
 
 ## Principios de Programación Utilizados
@@ -37,8 +38,174 @@ Explicación de cómo se ha abordado el problema, mencionando las estrategias im
 
 ## Arquitectura del Proyecto
 ### Diagrama de Clases
-- Representación visual de la estructura del sistema y sus relaciones.
+- Representación general de la estructura del sistema y sus relaciones.
+```mermaid
+classDiagram
+    class Subject {
+        -name: str
+        -group: int
+        -professor: str
+        -schedule: Tuple[str, str]
+        -days: List[str]
+        -preference: int
+        +__lt__(other)
+        +__str__()
+    }
 
+    class ScheduleOrganizer {
+        +has_conflict(subject: Subject, selected_subjects: List[Subject]) bool
+    }
+
+    class CombinationGenerator {
+        +generate_combinations(subjects: List[List[Subject]], limit: int) List[List[Subject]]
+    }
+
+    class Usuario {
+        -nivel_de_estudios: str
+        -sede: str
+        -facultad: str
+        -plan_de_estudios: str
+        -navegador: Any
+        -preferencias_generales: Dict[str, Any]
+        -pesos: Dict[str, int]
+        -limit: int
+        -grupos_favoritos: Dict[str, List[int]]
+        +ingresar_datos()
+        +asignar_pesos()
+        +ingresar_grupos_favoritos(materias: List[str])
+        +to_dict() Dict[str, Any]
+        +from_dict(datos: Dict[str, Any])
+    }
+
+    class GestorJSON {
+        -carpeta: str
+        +guardar_datos(datos: Dict[str, Any], nombre_archivo: str)
+        +cargar_datos(nombre_archivo: str) Dict[str, Any]
+    }
+
+    class SubjectScraper {
+        -driver: Any
+        -url: str
+        -subject_codes: List[str]
+        -nivel_de_estudios: str
+        -sede: str
+        -facultad: str
+        -plan_de_estudios: str
+        -subjects: List[Subject]
+        +open_website()
+        +select_option_by_text(select_id, text)
+        +click_button(button_id)
+        +return_to_main_page()
+        +reset_page()
+        +select_initial_options()
+        +scrape_subject_info(subject_code)
+        +run()
+    }
+
+    class SubjectParser {
+        +parse_subject_info(text: str) List[Subject]
+    }
+
+    class BrowserFactory {
+        +get_browser(browser_name)
+    }
+
+    %% Relationships
+    SubjectScraper --> BrowserFactory : uses
+    ScheduleOrganizer --> Subject : checks conflict
+    CombinationGenerator --> Subject : generates combinations
+    SubjectParser --> Subject : creates and returns
+    Usuario --> GestorJSON : saves and loads
+    SubjectScraper --> SubjectParser : parses subject info
+```
+Clases `Subject`, `ScheduleOrganizer` y `CombinationGenerator`. 
+```mermaid
+classDiagram
+    class Subject {
+        -name: str
+        -group: int
+        -professor: str
+        -schedule: Tuple[str, str]
+        -days: List[str]
+        -preference: int
+        +__lt__(other)
+        +__str__()
+    }
+
+    class ScheduleOrganizer {
+        +has_conflict(subject: Subject, selected_subjects: List[Subject]) bool
+    }
+
+    class CombinationGenerator {
+        +generate_combinations(subjects: List[List[Subject]], limit: int) List[List[Subject]]
+    }
+    %% Relationships
+    ScheduleOrganizer --> Subject : checks conflict
+    CombinationGenerator --> Subject : generates combinations
+```
+Clases `Usuario` y `GestorJSON`.
+```mermaid
+classDiagram
+     class Usuario {
+        -nivel_de_estudios: str
+        -sede: str
+        -facultad: str
+        -plan_de_estudios: str
+        -navegador: Any
+        -preferencias_generales: Dict[str, Any]
+        -pesos: Dict[str, int]
+        -limit: int
+        -grupos_favoritos: Dict[str, List[int]]
+        +ingresar_datos()
+        +asignar_pesos()
+        +ingresar_grupos_favoritos(materias: List[str])
+        +to_dict() Dict[str, Any]
+        +from_dict(datos: Dict[str, Any])
+    }
+
+    class GestorJSON {
+        -carpeta: str
+        +guardar_datos(datos: Dict[str, Any], nombre_archivo: str)
+        +cargar_datos(nombre_archivo: str) Dict[str, Any]
+    }
+    %% Relationships
+generates combinations
+    Usuario --> GestorJSON : saves and loads
+```
+Clases `SubjectScraper`, `SubjectParser` y `BrowserFactory`.
+```mermaid
+classDiagram
+     class SubjectScraper {
+        -driver: Any
+        -url: str
+        -subject_codes: List[str]
+        -nivel_de_estudios: str
+        -sede: str
+        -facultad: str
+        -plan_de_estudios: str
+        -subjects: List[Subject]
+        +open_website()
+        +select_option_by_text(select_id, text)
+        +click_button(button_id)
+        +return_to_main_page()
+        +reset_page()
+        +select_initial_options()
+        +scrape_subject_info(subject_code)
+        +run()
+    }
+
+    class SubjectParser {
+        +parse_subject_info(text: str) List[Subject]
+    }
+
+    class BrowserFactory {
+        +get_browser(browser_name)
+    }
+    %% Relationships
+    SubjectScraper --> BrowserFactory : uses
+    SubjectParser --> Subject : creates and returns
+    SubjectScraper --> SubjectParser : parses subject 
+```
 ### Estructura del Proyecto
 - Explicación de la organización de archivos y carpetas.
 
