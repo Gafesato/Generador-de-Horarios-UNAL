@@ -31,6 +31,15 @@ Explicación de cómo se ha abordado el problema, mencionando las estrategias im
 ## Principios de Programación Utilizados
 ### Programación Orientada a Objetos
 - Explicación de las clases principales utilizadas y su relación.
+1. `Subject`: Representa una materia con atributos clave. Se comparan objetos `Subject` con < para así establecer un orden en base a la preferencia. Esto será útil para la estructura heap como se verá más adelante.
+2. `ScheduleOrganizer`: Maneja el conflicto de horarios verificando si una materia se cruza con otras ya seleccionadas.
+3. `CombinationGenerator`: Usa una cola `heap` para priorizar combinaciones con mayor preferencia total, luego ordena los horarios generados y devuelve las mejores combinaciones.
+4. `Usuario`: Representa al estudiante con sus datos acádemicos y preferencias.
+5. `GestorJSON`: Manejo de datos del usuario.
+6. `SubjectScraper`: Extrae la información necesaria desde el buscador de cursos del SIA (web).
+7. `SubjectParser`: Procesa los datos obtenidos por el scraper.
+8. `BrowserFactory`: Crea instancias de navegadores para el scraper.
+- A modo general, tenemos la clase `SubjectParser` la cual estructura los datos extraídos por `SubjectScraper`. La primera clase crea múltiples instancias de `Subject`. El estudiante a través de `Usuario` define las preferencias que afectan la generación de horarios en `CombinationGenerator`. Finalmente `GestorJSON` maneja la gestión de los datos del usuario, permitiendo su almacenamiento para su uso en la aplicación.
 - Conceptos aplicados como encapsulamiento, herencia y polimorfismo.
 
 ### Patrones de Diseño
