@@ -276,9 +276,9 @@ Este proyecto automatiza la creación de horarios optimizados para estudiantes d
 
 ---
 Autores: 
-[Samuel Fernando Garzón Toro](https://github.com/Gafesato)
-[Juan Esteban Molina Rey](https://github.com/eljuanessoy)
-[Ever Nicolás Muñoz Cortés](https://github.com/nicolasmcort)
-Grupo: [ERROR404]
-Licencia: [AGPL-3.0]
+- [Samuel Fernando Garzón Toro](https://github.com/Gafesato)
+- [Juan Esteban Molina Rey](https://github.com/eljuanessoy)
+- [Ever Nicolás Muñoz Cortés](https://github.com/nicolasmcort)
+- Grupo: [ERROR404]
+- Licencia: [AGPL-3.0]
 
