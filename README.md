@@ -226,20 +226,45 @@ classDiagram
 ```
 ### Estructura del Proyecto
 ```
-📂 generador_horarios
- ├── 📂 data                    # Archivos JSON de configuración
- ├── 📂 src                     # Código fuente
- │   ├── subject.py             # Clase Subject
- │   ├── schedule_organizer.py  # Clase ScheduleOrganizer
- │   ├── combination_generator.py  # Generación de combinaciones
- │   ├── user.py                # Clase Usuario
- │   ├── scraper.py             # Web Scraping del SIA
- │   ├── gestor_json.py         # Gestión de archivos JSON
- ├── 📂 tests                   # Pruebas unitarias
- ├── README.md                  # Documentación
- ├── LICENSE.md                 # Licencia
- ├── requirements.txt           # Dependencias del proyecto
- ├── main.py                    # Punto de entrada
+ Generador-de-Horarios-UNAL
+ ├──  generator               # Código fuente principal
+ │   ├── app                 # Módulos principales
+ │   │   ├── app.py             # Archivo principal de la app
+ │   │   ├── browser_factory.py # Manejo de Selenium
+ │   │   ├── combination_generator.py  # Generación de combinaciones
+ │   │   ├── preference_calculator.py  # Cálculo de preferencias
+ │   │   ├── schedule_organizer.py  # Organización de horarios
+ │   │   ├── subject_parser.py   # Análisis de asignaturas
+ │   │   ├── subject_scraper.py  # Web Scraping del SIA
+ │   │   ├── subject.py          # Clase Subject
+ │   │   ├── user.py             # Clase Usuario
+ │   ├── interface            # Interfaz gráfica
+ │   │   ├── __init__.py
+ │   │   ├── button.py
+ │   │   ├── checkbox.py
+ │   │   ├── checkbox_group.py
+ │   │   ├── circle.py
+ │   │   ├── dropdown.py
+ │   │   ├── file_selector.py
+ │   │   ├── interface.py
+ │   │   ├── page_manager.py
+ │   │   ├── popupmenu.py
+ │   │   ├── progress_bar.py
+ │   │   ├── radio_group.py
+ │   │   ├── rectangle.py
+ │   │   ├── slider.py
+ │   │   ├── switch.py
+ │   │   ├── table.py
+ │   │   ├── text_area.py
+ │   │   ├── text_element.py
+ │   │   ├── widget.py
+ │   ├── __init__.py
+ │   ├── main.py                 # Punto de entrada del proyecto
+ ├── .gitignore                  # Archivos ignorados por Git
+ ├── Dockerfile                  # Configuración para Docker
+ ├── LICENSE                     # Licencia del proyecto
+ ├── README.md                   # Documentación
+ ├── requirements.txt             # Dependencias del proyecto
 ```
 ## Interfaz Gráfica de Usuario (GUI)
 - Descripción de la GUI desarrollada y cómo mejora la experiencia del usuario.
