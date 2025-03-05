@@ -23,7 +23,7 @@ class SubjectScraper:
     def open_website(self):
         """Abre la URL del sitio web."""
         self.driver.get(self.url)
-        # Esperar a que la página cargue completamente
+        # Wait for the page to load completely
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "pt1:r1:0:soc1::content"))
         )
@@ -31,14 +31,14 @@ class SubjectScraper:
     def select_option_by_text(self, select_id, text):
         """Selecciona una opción en un <select> por su texto visible."""
         try:
-            # Esperar a que el desplegable esté habilitado
+            # Wait for the dropdown to be enabled
             WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((By.ID, select_id))
             )
             select_element = self.driver.find_element(By.ID, select_id)
             select = Select(select_element)
             select.select_by_visible_text(text)
-            time.sleep(1)  # Pequeña pausa para evitar errores
+            time.sleep(1)  # Short break to avoid mistakes
         except Exception as e:
             print(f"No se pudo seleccionar la opción '{text}' en el desplegable con ID {select_id}: {e}")
             raise
@@ -49,7 +49,7 @@ class SubjectScraper:
             button = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((By.ID, button_id)))
             button.click()
-            time.sleep(3)  # Esperar para ver los cambios
+            time.sleep(3)  # Wait to see the changes
         except Exception as e:
             print(f"No se pudo hacer clic en el botón con ID {button_id}: {e}")
             raise
@@ -66,7 +66,7 @@ class SubjectScraper:
             print("Se hizo clic en el botón 'Volver'")
             time.sleep(3)
 
-            # Verificar que la página ha regresado correctamente
+            # Verify that the page has returned correctly
             WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.ID, "pt1:r1:0:it10::content"))
             )
@@ -90,11 +90,11 @@ class SubjectScraper:
     def scrape_subject_info(self, subject_code):
         """Extrae la información de una materia específica."""
         try:
-            # Esperar a que la tabla cargue
+            # Wait for the table to load
             WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, f"//a[contains(text(), '{subject_code}')]"))
             )
-            # Hacer clic en el enlace de la materia
+            # Click on the subject link
             link = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((By.XPATH, f"//a[contains(text(), '{subject_code}')]"))
             )
@@ -102,14 +102,14 @@ class SubjectScraper:
             print(f"Se hizo clic en la materia {subject_code}")
             time.sleep(5)
 
-            # Extraer el texto de la página
+            # Extract text from page
             page_text = self.driver.find_element(By.TAG_NAME, "body").text
 
-            # Parsear la información de la materia
+            # Parse the subject information
             subjects = SubjectParser.parse_subject_info(page_text)
-            self.subjects.extend(subjects)  # Agregar las materias extraídas a la lista
+            self.subjects.extend(subjects)  # Add the extracted subjects to the list
 
-            # Volver a la página principal
+            # Back to main page
             self.return_to_main_page()
         except Exception as e:
             print(f"No se pudo procesar la materia con código {subject_code}: {e}")
@@ -121,14 +121,14 @@ class SubjectScraper:
             self.open_website()
             self.select_initial_options()
 
-            # Hacer clic en "Mostrar" una sola vez para cargar todas las materias
+            # Click "Show" once to load all subjects
             self.click_button("pt1:r1:0:cb1")
 
-            # Iterar sobre cada materia
+            # Iterate on each subject
             for subject_code in self.subject_codes:
                 self.scrape_subject_info(subject_code)
 
         finally:
-            # Cerrar el navegador al finalizar
+            # Close the browser when finished
             self.driver.quit()
 
