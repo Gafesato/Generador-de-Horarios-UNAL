@@ -1,7 +1,7 @@
-# Usa una imagen ligera de Python
+# Use a lightweight Python image
 FROM python:3.9
 
-# Instala dependencias del sistema necesarias para Flet
+# Install system dependencies required by Flet
 RUN apt-get update && apt-get install -y \
     libgtk-3-0 \
     libgdk-pixbuf2.0-0 \
@@ -13,17 +13,17 @@ RUN apt-get update && apt-get install -y \
     gstreamer1.0-pulseaudio \
     && rm -rf /var/lib/apt/lists/*
 
-# Establece el directorio de trabajo dentro del contenedor
+# Sets the working directory inside the container
 WORKDIR /generator
 
-# Copia el contenido del proyecto al contenedor
+# Copy the contents of the project to the container
 COPY . /generator
 
-# Instala las dependencias de Python
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expone un puerto si la aplicación necesita uno
+# Expose a port if the application needs one
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación
+# Command to run the application
 CMD ["python", "-m", "generator.main"]
