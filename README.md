@@ -267,13 +267,13 @@ classDiagram
  ├── requirements.txt             # Project Dependencies
 ```
 ## Interfaz Gráfica de Usuario (GUI)
-1. Paso 1
+1. Cómo funciona la interfaz
 [Cómo funciona la interfaz](/img/Instrucciones.mp4)
-2. Paso 2
+2. Agregar la información del estudiante
 [Agregar la información del estudiante](/img/Info_usuario.mp4)
-3. Paso 3
+3. Agregar materias y elegir preferencias
 [Agregar materias y elegir preferencias](/img/Scraping.mp4)
-4. Paso4
+4. Generar horarios
 [Generar horarios](/img/generar_combinaciones.mp4)
 
 
