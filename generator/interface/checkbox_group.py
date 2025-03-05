@@ -7,11 +7,11 @@ from generator.interface.widget import Widget
 class CheckBoxGroup(Widget):
     def __init__(self, options, left=0, top=0, on_change=None):
         super().__init__("", left, top)
-        self.options = options  # Opciones del CheckBoxGroup
-        self.selected_options = []  # Lista de opciones seleccionadas
-        self.on_change = on_change  # Función para manejar el cambio de selección
-
-        # Crear los CheckBox individuales
+        self.options = options  # CheckBoxGroup Options
+        self.selected_options = []  # List of selected options
+        self.on_change = on_change  # Function to handle selection change
+        
+        # Create the individual CheckBoxes
         self.checkboxes = [
             ft.Checkbox(
                 label=option,
@@ -26,7 +26,7 @@ class CheckBoxGroup(Widget):
             checkbox.label for checkbox in self.checkboxes if checkbox.value
         ]
         if self.on_change:
-            self.on_change(e)  # Llamar a la función on_change proporcionada
+            self.on_change(e)  # Call the provided on_change function
 
     def create(self):
         """Crea y retorna el contenedor del CheckBoxGroup."""
