@@ -268,13 +268,13 @@ classDiagram
 ```
 ## Interfaz Gráfica de Usuario (GUI)
 1. Paso 1
-![Paso1](/img/Instrucciones.mp4)
+[Cómo funciona la interfaz](/img/Instrucciones.mp4)
 2. Paso 2
-![](/img/Info_usuario.mp4)
-3. Paso3
-![](/img/Scraping.mp4)
+[Agregar la información del estudiante](/img/Info_usuario.mp4)
+3. Paso 3
+[Agregar materias y elegir preferencias](/img/Scraping.mp4)
 4. Paso4
-![](/img/generar_combinaciones.mp4)
+[Generar horarios](/img/generar_combinaciones.mp4)
 
 
 ## Requisitos de Instalación
