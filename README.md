@@ -227,18 +227,18 @@ classDiagram
 ### Estructura del Proyecto
 ```
  Generador-de-Horarios-UNAL
- ├──  generator               # Código fuente principal
- │   ├── app                 # Módulos principales
- │   │   ├── app.py             # Archivo principal de la app
- │   │   ├── browser_factory.py # Manejo de Selenium
- │   │   ├── combination_generator.py  # Generación de combinaciones
- │   │   ├── preference_calculator.py  # Cálculo de preferencias
- │   │   ├── schedule_organizer.py  # Organización de horarios
- │   │   ├── subject_parser.py   # Análisis de asignaturas
- │   │   ├── subject_scraper.py  # Web Scraping del SIA
- │   │   ├── subject.py          # Clase Subject
- │   │   ├── user.py             # Clase Usuario
- │   ├── interface            # Interfaz gráfica
+ ├──  generator               # Main source code
+ │   ├── app                 # Main modules
+ │   │   ├── app.py             # Main app file
+ │   │   ├── browser_factory.py # Selenium Handling
+ │   │   ├── combination_generator.py  # Generation of combinations
+ │   │   ├── preference_calculator.py  # Preference calculation
+ │   │   ├── schedule_organizer.py  # Organization of schedules
+ │   │   ├── subject_parser.py   # Subject analysis
+ │   │   ├── subject_scraper.py  # SIA Web Scraping
+ │   │   ├── subject.py          # Class Subject
+ │   │   ├── user.py             # Class Usuario
+ │   ├── interface            # Graphic interface
  │   │   ├── __init__.py
  │   │   ├── button.py
  │   │   ├── checkbox.py
@@ -259,12 +259,12 @@ classDiagram
  │   │   ├── text_element.py
  │   │   ├── widget.py
  │   ├── __init__.py
- │   ├── main.py                 # Punto de entrada del proyecto
- ├── .gitignore                  # Archivos ignorados por Git
- ├── Dockerfile                  # Configuración para Docker
- ├── LICENSE                     # Licencia del proyecto
- ├── README.md                   # Documentación
- ├── requirements.txt             # Dependencias del proyecto
+ │   ├── main.py                 # Project entry point
+ ├── .gitignore                  # Files ignored by Git
+ ├── Dockerfile                  # Configuration for Docker
+ ├── LICENSE                     # Project License
+ ├── README.md                   # Documentation
+ ├── requirements.txt             # Project Dependencies
 ```
 ## Interfaz Gráfica de Usuario (GUI)
 
@@ -282,10 +282,10 @@ cd generador_horarios_unal
 ```
 python -m venv env
 
-# Activar entorno virtual
-# En Windows:
+# Activate virtual environment
+# On Windows:
 env\Scripts\activate
-# En macOS/Linux:
+# On macOS/Linux:
 source env/bin/activate
 ```
 3. Instalar dependencias.
