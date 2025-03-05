@@ -267,17 +267,19 @@ classDiagram
  ├── requirements.txt             # Dependencias del proyecto
 ```
 ## Interfaz Gráfica de Usuario (GUI)
-- Descripción de la GUI desarrollada y cómo mejora la experiencia del usuario.
-- Capturas de pantalla (si aplica).
+
+![](video.mp4)
 
 ## Requisitos de Instalación
+### Entorno virtual
 Pasos detallados para instalar y configurar el entorno de desarrollo:
+1. Clonar el repositorio.
 ```bash
-# Clonar el repositorio
 git clone https://github.com/usuario/generador_horarios_unal.git
 cd generador_horarios_unal
-
-# Crear entorno virtual
+```
+2. Crear entorno virtual
+```
 python -m venv env
 
 # Activar entorno virtual
@@ -285,16 +287,27 @@ python -m venv env
 env\Scripts\activate
 # En macOS/Linux:
 source env/bin/activate
-
-# Instalar dependencias
+```
+3. Instalar dependencias.
+```
 pip install -r requirements.txt
 ```
-
-## Ejemplo de Uso
-```bash
-python main.py
+### Usar Docker
+Se debe tener descargado [Docker](https://docs.docker.com/desktop/setup/install/windows-install/).
+1. Construir la imagen de Docker.
+Esperar a que el proceso finalice (Aprox. 5 minutos)
 ```
-El sistema solicitará la información del usuario y generará combinaciones de horarios óptimos evitando conflicto
+docker build -t generador-horarios .
+```
+2. Ejecutar un contenedor basado en la imagen.
+```
+docker run --rm -it -p 8080:8080 generador-horarios
+```
+## Ejemplo de Uso (Entorno Virtual)
+El directorio actual debe ser `Generador-de-Horarios-UNAL`.
+```bash
+python -m generator.main
+```
 
 ## Conclusiones
 Este proyecto automatiza la creación de horarios optimizados para estudiantes de la UNAL, permitiendo una selección rápida y eficiente de materias sin conflictos. Se pueden implementar mejoras como una interfaz gráfica y soporte para más criterios de preferencia en futuras versiones.
