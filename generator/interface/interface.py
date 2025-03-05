@@ -18,18 +18,18 @@ from generator.interface.text_area import TextArea
 from generator.interface.text_element import TextElement
 
 
-# Clase principal de la aplicación
+# Main application class
 def main(page: ft.Page):
-    # Configuración de la página
+    # Page Setup
     page_manager = PageManager(page)
     page.bgcolor = ft.Colors.BLUE_GREY_500
     page.title = "App con Varios Widgets"
-    # Crear un botón que se elimina a sí mismo al hacer clic
+    # Create a button that deletes itself when clicked
     def delete_self(e):
-        delete_button_container.remove_self()  # Eliminar el botón de la página
+        delete_button_container.remove_self()  # Remove button from page
         
 
-    # Crear los widgets
+    # Create the widgets
     text1 = TextElement(value="Aquí van tus preguntas", size=14, left=0, top=125, width=1000, height=250, page=page, text_color=ft.Colors.WHITE, bg_color=ft.Colors.BLUE_GREY_900, text_align="center")
     text2 = TextElement(value="Text 2", left=500, top=180, text_color="black", bg_color="yellow", width=200, height=100, page=page, text_align="center")
 
@@ -64,13 +64,13 @@ def main(page: ft.Page):
         left=10,
         top=10
     )
-    # Función para añadir 'x' a ambos textos
+    # Function to add 'x' to both texts
     def add_x():
         text1.update(text=text1.text.value + "x")
         text2.update(text=text2.text.value + "x")
         page.update()
 
-    # Función para cambiar el color de fondo y el color del texto de ambos textos
+    # Function to change the background color and text color of both texts
     def change_color():
         text1.update(bg_color="white")
         text2.update(bg_color="white")
@@ -81,11 +81,11 @@ def main(page: ft.Page):
     page1_widgets = [menu, text1, radio_group, checkbox, slider, text_area, rectangle, button_add_x, button_p1, delete_button_container]
     page2_widgets = [text2, switch, table, dropdown, circle, progress_bar, button_change_color, button_p2, checkbox_group, button_select]#, restore_button_container]
 
-    # Agregar páginas al PageManager
+    # Adding Pages to PageManager
     page_manager.add_page("page1", page1_widgets)
     page_manager.add_page("page2", page2_widgets)
 
-    # Mostrar la primera página
+    # Show first page
     page_manager.show_page("page1")
 
 
