@@ -7,23 +7,23 @@ class User:
         """
         Representa un usuario con sus datos y preferencias.
         """
-        # Valores por defecto
+        # Default values
         self.nivel_de_estudios = "Pregrado"
         self.sede = "1101 SEDE BOGOTÁ"
         self.facultad = "2055 FACULTAD DE INGENIERÍA"
         self.plan_de_estudios = "2A74 INGENIERÍA DE SISTEMAS Y COMPUTACIÓN"
-        self.navegador = "Edge"  # Navegador por defecto
+        self.navegador = "Edge"  # Default browser
         self.preferencias_generales = {
-            "horario": "mañana",  # Horario por defecto
-            "dias": ["LUNES", "MIÉRCOLES"]  # Días por defecto
+            "horario": "mañana",  # Default schedule
+            "dias": ["LUNES", "MIÉRCOLES"]  # Default days
         }
         self.pesos = {
-            "grupo": 3,  # Peso por defecto para grupo
-            "horario": 3,  # Peso por defecto para horario
-            "dias": 3  # Peso por defecto para días
+            "grupo": 3,  # Default weight for group
+            "horario": 3,  # Default weight for schedule
+            "dias": 3  # Default weight for days
         }
-        self.limit = 8  # Límite de horarios a generar (default 8)
-        self.grupos_favoritos = {}  # Grupos favoritos por materia
+        self.limit = 8  # Limit of schedules to generate (default 8)
+        self.grupos_favoritos = {}  # Favorite groups by subject
 
     def ingresar_datos(self, navegador: str = None, plan_de_estudios: str = None, 
                        nivel_de_estudios: str = None, 
@@ -32,7 +32,7 @@ class User:
         """
         Permite al usuario ingresar sus datos y preferencias. Si no se proporcionan, se usan los valores por defecto.
         """
-        # Actualizar los valores si se proporcionan
+        # Update values ​​if provided
         if navegador:
             self.navegador = navegador
         if plan_de_estudios:
