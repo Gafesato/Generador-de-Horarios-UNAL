@@ -10,14 +10,14 @@ class Button(Widget):
                  width=90, height=60, border_radius=8, font_size=16):
         super().__init__("", left, top)
 
-        # Crear el botón con las propiedades personalizadas
+        # Create the button with custom properties
         self.button = ft.ElevatedButton(
             text=label,
             on_click=action,
-            bgcolor=bg_color,  # Color de fondo
-            color=text_color,  # Color del texto
-            width=width,       # Ancho del botón
-            height=height,     # Alto del botón
+            bgcolor=bg_color,  # Background color
+            color=text_color,  # Text color
+            width=width,       # Button Width
+            height=height,     # Button Height
             style=ft.ButtonStyle(
                 shape=ft.RoundedRectangleBorder(radius=border_radius),
                 text_style=ft.TextStyle(size=font_size)
