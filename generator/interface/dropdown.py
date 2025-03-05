@@ -9,19 +9,19 @@ class Dropdown(Widget):
         super().__init__("", left, top)
         self.options = options
         self.selected_option = options[0] if options else None
-        self.on_change_callback = on_change  # Callback para manejar el evento on_change
+        self.on_change_callback = on_change  # Callback to handle the on_change event
 
         self.dropdown = ft.Dropdown(
             options=[ft.dropdown.Option(option) for option in options],
             on_change=self.update_selected_option,
             width=width,
-            content_padding=ft.padding.symmetric(horizontal=10),  # Ajusta el padding interno
-            alignment=ft.alignment.center_left,  # Alinea el contenido a la izquierda
+            content_padding=ft.padding.symmetric(horizontal=10),  # Adjusts the internal padding
+            alignment=ft.alignment.center_left,  # Align content to the left
         )
 
     def update_selected_option(self, e):
         self.selected_option = e.control.value
-        if self.on_change_callback:  # Si hay un callback, llamarlo
+        if self.on_change_callback:  # If there is a callback, call it
             self.on_change_callback(e)
 
     def create(self):
