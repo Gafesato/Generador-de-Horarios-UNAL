@@ -3,7 +3,7 @@ import flet as ft
 from generator.interface.widget import Widget
 
 
-# Clase para los textos que extiende de Widget
+# Class for texts that extends from Widget
 class TextElement(Widget):
     def __init__(
         self,
@@ -16,23 +16,23 @@ class TextElement(Widget):
         width=100,
         height=50,
         page=None,
-        text_align="top-left",  # Nuevo atributo para controlar la alineación del texto
+        text_align="top-left",  # New attribute to control text alignment
     ):
         super().__init__(value, left, top, width, height)
         self.size = size
         self.text_color = text_color
         self.bg_color = bg_color
-        self.page = page  # Pasar la referencia de la página
-        self.text_align = text_align  # Alineación del texto
+        self.page = page  # Pass the page reference
+        self.text_align = text_align  # Text alignment
 
-        # Crear el Text
+        # Create the Text
         self.text = ft.Text(value=self.value, size=self.size, color=self.text_color)
 
-        # Configurar la alineación del texto dentro del Container
+        # Setting text alignment inside the Container
         self.container = ft.Container(
             content=ft.Column(
                 controls=[self.text],
-                scroll=ft.ScrollMode.AUTO,  # Habilitar el desplazamiento
+                scroll=ft.ScrollMode.AUTO,  # Enable scrolling
             ),
             left=self.left,
             top=self.top,
@@ -43,38 +43,38 @@ class TextElement(Widget):
             border_radius=5,
         )
 
-        # Aplicar la alineación del texto
+        # Apply text alignment
         self._apply_text_alignment()
 
     def _apply_text_alignment(self):
         """Aplica la alineación del texto según el valor de text_align."""
         if self.text_align == "center":
-            # Centrar el texto vertical y horizontalmente
+            # Center text vertically and horizontally
             self.container.alignment = ft.alignment.center
         elif self.text_align == "center-left":
-            # Centrar verticalmente y alinear a la izquierda
+            # Center vertically and align left
             self.container.alignment = ft.alignment.center_left
         else:
-            # Por defecto: alinear en la parte superior izquierda
+            # Default: Align Top Left
             self.container.alignment = ft.alignment.top_left
 
     def create(self):
-        return self.container  # Retornar el container creado
+        return self.container  # Return the created container
 
     def update(self, text=None, text_color=None, bg_color=None, text_align=None):
         """Actualiza las propiedades del texto: texto, color del texto, color de fondo y alineación."""
         if text is not None:
-            self.text.value = text  # Actualizar el texto
+            self.text.value = text  # Update text
         if text_color is not None:
-            self.text.color = text_color  # Actualizar color del texto
+            self.text.color = text_color  # Update text color
         if bg_color is not None:
-            self.bg_color = bg_color  # Actualizar el color de fondo
-            self.container.bgcolor = bg_color  # Actualizar el color de fondo del container
+            self.bg_color = bg_color  # Update background color
+            self.container.bgcolor = bg_color  # Update the container background color
         if text_align is not None:
-            self.text_align = text_align  # Actualizar la alineación del texto
-            self._apply_text_alignment()  # Aplicar la nueva alineación
+            self.text_align = text_align  # Update text alignment
+            self._apply_text_alignment()  # Apply the new alignment
 
-        if self.page:  # Asegurarse de que page esté disponible
-            self.page.update()  # Actualizar la página para reflejar el cambio
+        if self.page:  # Make sure page is available
+            self.page.update()  # Update the page to reflect the change
 
 
