@@ -275,7 +275,7 @@ classDiagram
 Pasos detallados para instalar y configurar el entorno de desarrollo:
 1. Clonar el repositorio.
 ```bash
-git clone https://github.com/usuario/generador_horarios_unal.git
+git clone https://github.com/Gafesato/Generador-de-Horarios-UNAL.git
 cd generador_horarios_unal
 ```
 2. Crear entorno virtual
