@@ -17,20 +17,20 @@ class PreferenceCalculator:
         """
         preferencia = 0
 
-        # Preferencia de horario
-        hora_inicio = int(subject.schedule[0].split(':')[0])  # Extraer la hora y convertirla a entero
+        # Schedule preference
+        hora_inicio = int(subject.schedule[0].split(':')[0])  # Extract time and convert to integer
         if preferencias["horario"] == "mañana" and hora_inicio < 12:
             preferencia += pesos["horario"]
         elif preferencias["horario"] == "tarde" and hora_inicio >= 12:
             preferencia += pesos["horario"]
 
-        # Preferencia de días
+        # Preference of days
         dias_preferidos = set(preferencias["dias"])
         dias_materia = set(subject.days)
         if dias_preferidos & dias_materia:
             preferencia += pesos["dias"]
 
-        # Preferencia de grupo favorito
+        # Favorite group preference
         if subject.name in grupos_favoritos and subject.group in grupos_favoritos[subject.name]:
             preferencia += pesos["grupo"]
 
