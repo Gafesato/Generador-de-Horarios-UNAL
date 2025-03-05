@@ -1,20 +1,29 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim
+# Usa una imagen ligera de Python
+FROM python:3.9
 
-# Set the working directory in the container
+# Instala dependencias del sistema necesarias para Flet
+RUN apt-get update && apt-get install -y \
+    libgtk-3-0 \
+    libgdk-pixbuf2.0-0 \
+    libglib2.0-0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-libav \
+    gstreamer1.0-alsa \
+    gstreamer1.0-pulseaudio \
+    && rm -rf /var/lib/apt/lists/*
+
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /generator
 
-# Copy the current directory contents into the container at /app
+# Copia el contenido del proyecto al contenedor
 COPY . /generator
 
-# Install any needed dependencies specified in requirements.txt
+# Instala las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8080 available to the world outside this container
+# Expone un puerto si la aplicación necesita uno
 EXPOSE 8080
 
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "main.py"]
+# Comando para ejecutar la aplicación
+CMD ["python", "-m", "generator.main"]
