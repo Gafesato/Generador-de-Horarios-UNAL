@@ -267,8 +267,15 @@ classDiagram
  ├── requirements.txt             # Project Dependencies
 ```
 ## Interfaz Gráfica de Usuario (GUI)
+1. Paso 1
+![Paso1](/img/Instrucciones.mp4)
+2. Paso 2
+![](/img/Info_usuario.mp4)
+3. Paso3
+![](/img/Scraping.mp4)
+4. Paso4
+![](/img/generar_combinaciones.mp4)
 
-![](video.mp4)
 
 ## Requisitos de Instalación
 ### Entorno virtual
